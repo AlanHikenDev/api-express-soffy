@@ -6,22 +6,26 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-const tasks = [];
+const tips = [];
 
-// Ruta para obtener todas las tareas
-router.get('/tasks', (req, res) => {
-  res.json(tasks);
+// Ruta para obtener todas las propinas
+router.get('/tips', (req, res) => {
+  res.json(tips);
 });
 
-router.post('/tasks', (req, res) => {
-  const { title, description } = req.body;
-  const newTask = {
-    id: tasks.length + 1,
-    title,
-    description,
-  };
-  tasks.push(newTask);
-  res.json(newTask);
+router.post('/tips', (req, res) => {
+  const { fecha, isSplit, total, num_personas, pago_por_persona, payment_method } = req.body;
+  const newTip = {
+      id: tips.length + 1,
+      fecha: fecha,
+      isSplit: isSplit,
+      total: total,
+      num_personas: num_personas,
+      pago_por_persona: pago_por_persona,
+      payment_method: payment_method,
+  }
+  tips.push(newTip);
+  res.json(newTip);
 });
 
 // Ruta para obtener una tarea por ID
